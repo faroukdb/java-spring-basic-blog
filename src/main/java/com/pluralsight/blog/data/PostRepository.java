@@ -3,10 +3,8 @@ package com.pluralsight.blog.data;
 import com.pluralsight.blog.model.Post;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
+import javax.swing.text.html.Option;
+import java.util.*;
 
 @Component
 public class PostRepository {
@@ -51,6 +49,7 @@ public class PostRepository {
     }
 
     public Post findById(Long id) {
-        return null;
+        Optional<Post> postById = ALL_POSTS.stream().filter(post -> post.getId().equals(id)).findFirst();
+        return postById.get();
     }
 }
