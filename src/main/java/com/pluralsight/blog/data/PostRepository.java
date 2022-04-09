@@ -49,7 +49,9 @@ public class PostRepository {
     }
 
     public Post findById(Long id) {
-        Optional<Post> postById = ALL_POSTS.stream().filter(post -> post.getId().equals(id)).findFirst();
-        return postById.get();
+        for (Post post : ALL_POSTS)
+            if (post.getId() == id)
+                return post;
+        return null;
     }
 }
